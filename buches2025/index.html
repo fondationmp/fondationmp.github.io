@@ -37,28 +37,49 @@
 
     /* Hero */
     .hero { padding: 56px 0 32px; }
-    .hero-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center; }
+    .hero-grid { 
+      display:grid; 
+      grid-template-columns: 0.9fr 1.1fr; /* image gauche, texte droite */
+      gap:32px; 
+      align-items:center; 
+    }
+
+    .card { 
+      background: var(--panel); 
+      border:1px solid #00000012; 
+      border-radius: var(--radius); 
+      box-shadow: var(--shadow); 
+      padding: 18px; 
+    }
+    .preview { 
+      display:grid; 
+      place-items:center; 
+      aspect-ratio: 16/10; 
+      border-radius:12px; 
+      background:#fff6f3; 
+      border:1px dashed #00000014; 
+      overflow:hidden; 
+    }
+    .preview img { 
+      max-width: 100%; 
+      height: auto; 
+      display:block; 
+    }
+
     .lead { font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); margin: 8px 0 22px; }
-    .card { background: var(--panel); border:1px solid #00000012; border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px; }
-    .preview { display:grid; place-items:center; aspect-ratio: 16/10; border-radius:12px; background:#fff6f3; border:1px dashed #00000014; overflow:hidden; }
-    .preview img { width:25%; height:auto; object-fit:contain; }
-
-    section { padding: 40px 0; }
-
     .flavors { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
-    @media (max-width: 720px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .flavors { grid-template-columns: 1fr; }
-      .preview img { width:50%; }
+    @media (max-width: 720px) { 
+      .hero-grid { grid-template-columns: 1fr; } 
+      .flavors { grid-template-columns: 1fr; } 
     }
 
     .pill { background:#fff; border:1px solid #00000012; border-radius:999px; padding:10px 14px; box-shadow: var(--shadow); }
-
     .note { color: var(--muted); font-size: 14px; }
     footer { padding: 32px 0 60px; color: var(--muted); border-top:1px solid #00000012; margin-top: 40px; text-align:center; }
   </style>
 </head>
 <body>
+  <!-- En-tête -->
   <header class="header">
     <div class="container nav">
       <a class="brand" href="/" title="Retour à l’accueil">
@@ -66,14 +87,23 @@
         <span>Fondation Manon Périard</span>
       </a>
       <nav class="nav-links">
-        <a class="btn secondary" href="/">Retour à l'accueil</a>
+        <a class="btn secondary" href="/">← Retour à l'accueil</a>
         <a class="btn" href="#commande">Passer une commande</a>
       </nav>
     </div>
   </header>
 
+  <!-- Hero -->
   <main class="hero">
     <div class="container hero-grid">
+      <!-- Image à gauche -->
+      <div class="card">
+        <div class="preview" role="img" aria-label="Bûche de Noël — L’Arrêt Glacé">
+          <img src="buche.jpg" alt="Bûche de Noël de la crèmerie L’Arrêt Glacé">
+        </div>
+      </div>
+
+      <!-- Texte à droite -->
       <div>
         <h1>Bûches de Noël — Édition 2025</h1>
         <p class="lead">Le prix à l’unité est de <strong>26,28&nbsp;$</strong> (taxes incluses). <strong>15&nbsp;% des ventes</strong> sera remis à la Fondation Manon Périard pour soutenir sa mission.</p>
@@ -89,14 +119,10 @@
           <a class="btn secondary" href="index.html#paiement">Faire un don</a>
         </div>
       </div>
-      <div class="card">
-        <div class="preview" role="img" aria-label="Campagne Bûches de Noël">
-          <img src="images/buche.jpg" alt="Affiche de la campagne Bûches de Noël Fondation Manon Périard 2025" />
-        </div>
-      </div>
     </div>
   </main>
 
+  <!-- Détails (inchangés) -->
   <section>
     <div class="container">
       <h2>À propos de la campagne</h2>
