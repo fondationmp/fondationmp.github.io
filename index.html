@@ -62,10 +62,21 @@
     .event-box { background: var(--panel); border-radius: var(--radius); box-shadow: var(--shadow); padding: 32px; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: nowrap; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .event-box.visible { opacity: 1; transform: translateY(0); }
     .events-list .event-box:nth-child(even) { flex-direction: row-reverse; }
-    .event-box img { width: 45%; border-radius: var(--radius); box-shadow: var(--shadow); transition: transform 0.3s ease; }
+    .event-box img { width: 25%; height: auto; border-radius: var(--radius); box-shadow: var(--shadow); transition: transform 0.3s ease; }
     .event-box img:hover { transform: scale(1.03); }
-    .event-content { width: 50%; }
+    .event-content { width: 58%; }
     footer { padding: 32px 0 60px; color: var(--muted); border-top:1px solid #00000012; margin-top: 40px; text-align:center; }
+  
+/* === Responsive event layout === */
+@media (max-width: 900px) {
+  .event-box { flex-direction: column !important; align-items: stretch; gap: 18px; }
+  .event-box img, .event-content { width: 100% !important; }
+  .event-box img { height: auto; }
+}
+@media (min-width: 901px) {
+  .event-box { flex-wrap: nowrap; }
+}
+
   </style>
 </head>
 <body>
@@ -115,7 +126,7 @@
           <p>D’une part, nous souhaitons favoriser l’accessibilité des évaluations de professionnels en éducation afin de soutenir l’enfant dans son cheminement scolaire. Par ce fait, la fondation désire confirmer ou infirmer des hypothèses de divers troubles relevés par leur école d’appartenance pour un plus vaste éventail d’élèves. De plus, nous désirons alléger les charges financières des familles en offrant une contribution financière pour les évaluations selon les critères établis par la fondation. Finalement, celle-ci aspire à créer des partenariats avec des professionnels de premier plan qui pourront soutenir les familles dans un délai raisonnable.</p>
         </div>
         <div class="vision-image">
-          <img src="images/manonp.jpg" alt="Manon Périard" />
+          <img src="manonp.jpg" alt="Manon Périard" />
         </div>
       </div>
     </div>
@@ -179,7 +190,7 @@
       <h2>Évènements</h2>
       <div class="events-list">
         <div class="event-box">
-  <img src="images/buche.jpg" alt="Bûches de Noël - Édition 2025" />
+  <img loading="lazy" src="buche.jpg" alt="Bûches de Noël - Édition 2025" />
   <div class="event-content">
     <h3>Bûches de Noël (Édition 2025)</h3>
     <p>Pour une deuxième année consécutive, la Fondation Manon Périard lance sa campagne de Bûches de Noël du <strong>3 novembre au 21 novembre 2025</strong>, en collaboration avec la crèmerie <strong>L’Arrêt Glacé</strong>, qui remettra <strong>15&nbsp;% des ventes</strong> à la fondation afin de soutenir notre mission.</p>
@@ -188,7 +199,7 @@
   </div>
 </div>
         <div class="event-box">
-          <img src="images/escacourse.jpg" alt="Escacourse 2025 - course de financement" />
+          <img loading="lazy" src="escacourse.jpg" alt="Escacourse 2025 - course de financement" />
           <div class="event-content">
             <h3>Escacourse (2025)</h3>
             <p><strong>🎉 C’est parti pour l’Escacourse ! 🏃‍♂️🌍</strong></p>
