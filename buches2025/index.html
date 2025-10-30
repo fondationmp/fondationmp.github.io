@@ -41,7 +41,7 @@
       display:grid; 
       grid-template-columns: 0.9fr 1.1fr; 
       gap:32px; 
-      align-items: center; 
+      align-items: stretch; /* ajustement à la même hauteur */
     }
 
     .card { 
@@ -49,28 +49,32 @@
       border:1px solid #00000012; 
       border-radius: var(--radius); 
       box-shadow: var(--shadow); 
-      padding: 18px; 
+      padding: 0; 
       display:flex; 
-      align-items:center; 
+      align-items: stretch; 
       justify-content:center;
+      overflow:hidden;
     }
+
+    /* Encadré image */
     .preview { 
+      position: relative;
       width: 100%;
-      height: auto;
       border-radius:12px; 
-      background:#fff6f3; 
-      border:1px dashed #00000014; 
-      display:flex; 
-      align-items:center; 
-      justify-content:center;
       overflow:hidden; 
+      aspect-ratio: 4 / 5; /* ratio identique à l’image */
+      height: 100%;
+      background: #fff6f3;
+      border:1px dashed #00000014;
     }
+
     .preview img { 
-      width: 40%;  /* image réduite à 40% de sa taille */
-      height: auto;
-      object-fit: contain;
-      border-radius:12px;
-      display:block;
+      position:absolute;
+      top:0; left:0;
+      width:100%;
+      height:100%;
+      object-fit: cover; /* remplit le cadre sans déformation */
+      object-position: center;
     }
 
     .lead { font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); margin: 8px 0 22px; }
@@ -78,7 +82,7 @@
     @media (max-width: 720px) { 
       .hero-grid { grid-template-columns: 1fr; align-items:center; } 
       .flavors { grid-template-columns: 1fr; } 
-      .preview img { width:70%; height:auto; }
+      .preview { aspect-ratio: 16 / 9; height:auto; }
     }
 
     .pill { background:#fff; border:1px solid #00000012; border-radius:999px; padding:10px 14px; box-shadow: var(--shadow); }
