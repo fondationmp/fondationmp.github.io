@@ -26,7 +26,7 @@
     h2 { font-size: clamp(24px, 3.6vw, 36px); margin: 0 0 8px; }
     .container { width: min(1100px, 92%); margin-inline: auto; }
 
-    /* En-tête (même style que Version1) */
+    /* En-tête */
     .header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(1.2) blur(6px); background: color-mix(in srgb, var(--bg) 92%, transparent); border-bottom: 1px solid #00000010; }
     .nav { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; }
     .brand { display:flex; gap:12px; align-items:center; font-weight:700; color: var(--accent); }
@@ -41,13 +41,17 @@
     .lead { font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); margin: 8px 0 22px; }
     .card { background: var(--panel); border:1px solid #00000012; border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px; }
     .preview { display:grid; place-items:center; aspect-ratio: 16/10; border-radius:12px; background:#fff6f3; border:1px dashed #00000014; overflow:hidden; }
-    .preview img { max-width: 100%; height:auto; }
+    .preview img { width:25%; height:auto; object-fit:contain; }
 
     section { padding: 40px 0; }
 
-    /* Grille de saveurs */
     .flavors { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
-    @media (max-width: 720px) { .hero-grid { grid-template-columns: 1fr; } .flavors { grid-template-columns: 1fr; } }
+    @media (max-width: 720px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .flavors { grid-template-columns: 1fr; }
+      .preview img { width:50%; }
+    }
+
     .pill { background:#fff; border:1px solid #00000012; border-radius:999px; padding:10px 14px; box-shadow: var(--shadow); }
 
     .note { color: var(--muted); font-size: 14px; }
@@ -55,7 +59,6 @@
   </style>
 </head>
 <body>
-  <!-- En-tête -->
   <header class="header">
     <div class="container nav">
       <a class="brand" href="/" title="Retour à l’accueil">
@@ -63,13 +66,12 @@
         <span>Fondation Manon Périard</span>
       </a>
       <nav class="nav-links">
-        <a class="btn secondary" href="/">← Retour à l'accueil</a>
+        <a class="btn secondary" href="/">Retour à l'accueil</a>
         <a class="btn" href="#commande">Passer une commande</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
   <main class="hero">
     <div class="container hero-grid">
       <div>
@@ -78,9 +80,9 @@
         <div class="flavors">
           <div class="pill">Érable & noix</div>
           <div class="pill">Cerise noire & chocolat</div>
-            <div class="pill">Oreo</div>
-          <div class="pill">Framboise‑brownie</div>
-          <div class="pill">Choco‑noisette</div>
+          <div class="pill">Oreo</div>
+          <div class="pill">Framboise-brownie</div>
+          <div class="pill">Choco-noisette</div>
         </div>
         <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
           <a id="commande" class="btn" href="https://www.cssd.gouv.qc.ca/parents-eleves/activites/fondation-manon-periard-buches-de-noel_2" target="_blank" rel="noopener">Passer une commande</a>
@@ -88,14 +90,13 @@
         </div>
       </div>
       <div class="card">
-        <div class="preview" role="img" aria-label="Crèmerie partenaire — L’Arrêt Glacé">
-          <img src="images/buche.jpg" alt="Crèmerie L’Arrêt Glacé — partenaire de la campagne" />
+        <div class="preview" role="img" aria-label="Campagne Bûches de Noël">
+          <img src="buche.jpg" alt="Affiche de la campagne Bûches de Noël Fondation Manon Périard 2025" />
         </div>
       </div>
     </div>
   </main>
 
-  <!-- Détails (reprend le texte de l’évènement) -->
   <section>
     <div class="container">
       <h2>À propos de la campagne</h2>
