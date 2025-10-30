@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fondation Manon Périard — L’équipe</title>
+  <meta name="description" content="Découvrez l’équipe et le conseil d’administration de la Fondation Manon Périard." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fffaf9;
+      --panel: #ffffff;
+      --muted: #6d6d6d;
+      --text: #2b2b2b;
+      --brand: #c67b6f;
+      --brand-600: #b96a5d;
+      --accent: #1f3a33;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(31,58,51,.12);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    h1, h2, h3 { font-family: "Playfair Display", serif; color: var(--accent); letter-spacing:.2px; }
+    h1 { font-size: clamp(30px, 5vw, 56px); line-height:1.12; margin: 12px 0 16px; }
+    h2 { font-size: clamp(24px, 3.6vw, 36px); margin: 0 0 8px; }
+    h3 { font-size: 20px; margin: 0 0 6px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: min(1100px, 92%); margin-inline: auto; }
+    .header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(1.2) blur(6px); background: color-mix(in srgb, var(--bg) 92%, transparent); border-bottom: 1px solid #00000010; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 16px; }
+    .brand { display:flex; gap:12px; align-items:center; font-weight: 700; letter-spacing:.2px; color: var(--accent); }
+    .logo-img { width: 46px; height: 46px; object-fit: contain; border-radius: 999px; box-shadow: 0 3px 10px rgba(0,0,0,.08); }
+    .nav-links { display: flex; gap: 20px; align-items:center; flex-wrap: wrap; }
+    .nav-links a { font-weight:600; }
+    @media (max-width: 760px) { .nav { flex-wrap: wrap; } .nav-links { width: 100%; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; } .nav-links::-webkit-scrollbar { display: none; } }
+
+    main { padding: 48px 0 20px; }
+    .lead { color: var(--muted); margin: 0 0 24px; }
+    .grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-2 { display:grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    @media (max-width: 1000px) { .grid-3 { grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 680px)  { .grid-3, .grid-2 { grid-template-columns: 1fr;} }
+
+    .card { background: var(--panel); border: 1px solid #00000012; border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px; }
+    .member { display:flex; gap:16px; align-items:flex-start; }
+    .avatar { width: 86px; height: 86px; border-radius: 12px; object-fit:cover; box-shadow: var(--shadow); background:#fff6f3; }
+    .role { font-weight:600; color:#40554f; margin-top:2px; }
+    .email { font-size: 14px; color: var(--muted); }
+
+    .btn { display:inline-block; text-decoration:none; padding:10px 16px; background: linear-gradient(180deg, var(--brand) 0%, var(--brand-600) 100%); color:white; border:none; border-radius:999px; font-weight:600; text-align:center; box-shadow: 0 8px 20px rgba(198,123,111,.25); transition: background 0.2s ease; }
+    .btn:hover { background: var(--brand-600); color: white; }
+    .btn.secondary { background: transparent; border:1px solid #00000020; color: var(--accent); box-shadow:none; }
+
+    .board-list { columns: 2; column-gap: 18px; }
+    @media (max-width: 760px) { .board-list { columns: 1; } }
+    .board-item { break-inside: avoid; padding: 12px 14px; border:1px solid #00000012; border-radius: 12px; margin-bottom: 12px; background: #fff; }
+    .board-item strong { color: var(--accent); }
+
+    /* Modal styles */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 1000; }
+    .modal-overlay.active { display: flex; }
+    .modal { width: min(560px, 96%); background: #fff; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid #00000014; }
+    .modal header { padding: 16px 18px; border-bottom: 1px solid #00000010; display:flex; align-items:center; justify-content: space-between; }
+    .modal h3 { margin: 0; }
+    .modal .close { border: none; background: transparent; font-size: 22px; line-height: 1; cursor: pointer; color: #7a7a7a; }
+    .modal .content { padding: 18px; }
+    .field { margin-bottom: 12px; }
+    .label { display:block; font-weight: 600; margin-bottom: 6px; color: var(--accent); }
+    .input, .textarea { width: 100%; padding: 10px 12px; border-radius: 12px; border:1px solid #00000020; background: #fff; outline: none; }
+    .input:focus, .textarea:focus { border-color: var(--brand-600); box-shadow: 0 0 0 4px rgba(198,123,111,.15); }
+    .textarea { min-height: 120px; resize: vertical; }
+    .actions { display:flex; gap:10px; justify-content: flex-end; margin-top: 10px; }
+    .btn.ghost { background: transparent; border:1px solid #00000020; color: var(--accent); box-shadow:none; }
+    .error { color: #9b1c1c; font-size: 14px; display:none; margin-top: 4px; }
+    .success { color: #1b5e20; font-size: 14px; display:none; margin-top: 8px; }
+    footer { padding: 32px 0 60px; color: var(--muted); border-top:1px solid #00000012; margin-top: 40px; text-align:center; }
+  
+    /* --- Team list: alternating image/text layout (keeps site colors) --- */
+    .team-list { display: grid; gap: 28px; }
+    .team-list .member { display: flex; gap: 28px; align-items: center; padding: 18px; background: var(--panel); border: 1px solid #00000012; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .team-list .member:nth-child(even) { flex-direction: row-reverse; }
+    .team-list .avatar { width: 300px; height: 300px; border-radius: 16px; object-fit: cover; background:#fff6f3; box-shadow: var(--shadow); }
+    .team-list .member > div { flex: 1; }
+    .team-list .member h3 { margin: 0 0 6px; }
+    .team-list .member .role { margin-top: 0; }
+    @media (max-width: 1000px) {
+      .team-list .avatar { width: 240px; height: 240px; }
+    }
+    @media (max-width: 760px) {
+      .team-list .member, .team-list .member:nth-child(even) { flex-direction: column; align-items: flex-start; }
+      .team-list .avatar { width: 100%; max-width: 360px; height: auto; aspect-ratio: 1 / 1; }
+    }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav" role="navigation" aria-label="Navigation principale">
+      <a class="brand" href="/">
+        <img class="logo-img" src="images/logo.jpg" alt="Logo Fondation Manon Périard" />
+        <span>Fondation Manon Périard</span>
+      </a>
+      <nav class="nav-links" aria-label="Liens">
+        <a href="/#paiement" class="btn" style="padding:8px 14px;">Faire un don</a>
+      
+        <a class="btn secondary" href="/">← Retour à l\'accueil</a>
+</nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>L’équipe</h1>
+    <p class="lead">Découvrez les personnes qui font vivre la Fondation Manon Périard au quotidien.</p>
+
+    <section aria-labelledby="membres">
+      <h2 id="membres">Équipe opérationnelle</h2>
+      <div class="team-list">
+        <!-- 7 membres (exemple) -->
+        
+        <article class='card member'>
+          <img class='avatar' loading='lazy' src='images/Sonia.jpg' alt='Portrait membre 1' />
+          <div>
+            <h3>Sonia Gauvin</h3>
+            <div class='role'>Enseignante</div>
+            <p>Brève biographie (3–4 lignes) décrivant le rôle et l’implication.</p>
+          </div>
+        </article>
+
+        <article class='card member'>
+          <img class='avatar' loading='lazy' src='images/Maxime.jpg' alt='Portrait membre 2' />
+          <div>
+            <h3>Maxime Phillion</h3>
+            <div class='role'>Titre du poste</div>
+            <p>Brève biographie (3–4 lignes) décrivant le rôle et l’implication.</p>
+          </div>
+        </article>
+
+        <article class='card member'>
+          <img class='avatar' loading='lazy' src='images/Nancy.jpg' alt='Portrait membre 3' />
+          <div>
+            <h3>Nancy Tremblay</h3>
+            <div class='role'>Enseignante</div>
+            <p>Brève biographie (3–4 lignes) décrivant le rôle et l’implication.</p>
+          </div>
+        </article>
+
+        <article class='card member'>
+          <img class='avatar' loading='lazy' src='images/MarieCaron.jpg' alt='Portrait membre 4' />
+          <div>
+            <h3>Marie-Ève Caron</h3>
+            <div class='role'>Enseignante</div>
+            <p>Brève biographie (3–4 lignes) décrivant le rôle et l’implication.</p>
+          </div>
+        </article>
+
+        <article class='card member'>
+          <img class='avatar' loading='lazy' src='images/Josee.jpg' alt='Portrait membre 5' />
+          <div>
+            <h3>Josée Plante</h3>
+            <div class='role'>Technicienne en Éducation Spécialisée</div>
+            <p>Brève biographie (3–4 lignes) décrivant le rôle et l’implication.</p>
+          </div>
+        </article>
+
+        <article class='card member'>
+          <img class='avatar' loading='lazy' src='images/ManonTherien.jpg' alt='Portrait membre 6' />
+          <div>
+            <h3>Manon Thérien</h3>
+            <div class='role'>Enseignante</div>
+            <p>Brève biographie (3–4 lignes) décrivant le rôle et l’implication.</p>
+          </div>
+        </article>
+
+        <article class='card member'>
+          <img class='avatar' loading='lazy' src='images/Eric.jpg' alt='Portrait membre 7' />
+          <div>
+            <h3>Eric Fortier</h3>
+            <div class='role'>Courtier immobilier</div>
+            <p>Brève biographie (3–4 lignes) décrivant le rôle et l’implication.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="conseil" style="margin-top:36px;">
+      <h2 id="conseil">Conseil d’administration</h2>
+      <p class="lead">Un conseil engagé qui oriente la mission et veille à la saine gouvernance.</p>
+      <div class="board-list">
+        <div class="board-item"><strong>Président·e :</strong> Nom Prénom – Titre, organisation</div>
+        <div class="board-item"><strong>Vice-président·e :</strong> Nom Prénom – Titre, organisation</div>
+        <div class="board-item"><strong>Secrétaire :</strong> Nom Prénom – Titre, organisation</div>
+        <div class="board-item"><strong>Trésorier·ère :</strong> Nom Prénom – Titre, organisation</div>
+        <div class="board-item"><strong>Administrateur·trice :</strong> Nom Prénom – Expertise</div>
+        <div class="board-item"><strong>Administrateur·trice :</strong> Nom Prénom – Expertise</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="benevoles" style="margin-top:36px;">
+      <h2 id="benevoles">Bénévoles & partenaires</h2>
+      <div class="grid-2">
+        <div class="card" style="text-align:center;">
+          <h3>Devenir bénévole</h3>
+          <p>Contribuez concrètement à la réussite scolaire des enfants. Événements, logistique, communications&nbsp;: il y a une place pour vous.</p>
+          <button class="btn open-modal" data-subject="Devenir bénévole">Voir les occasions</button>
+        </div>
+        <div class="card" style="text-align:center;">
+          <h3>Partenaires professionnels</h3>
+          <p>Orthopédagogues, orthophonistes, neuropsychologues : collaborez avec nous pour accélérer l’accès aux évaluations.</p>
+          <button class="btn open-modal" data-subject="Partenaire professionnel">Proposer une collaboration</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal with Formspree form -->
+  <div class="modal-overlay" id="contactModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal" role="document">
+      <header>
+        <h3 id="modalTitle">Écrire à la Fondation</h3>
+        <button class="close" aria-label="Fermer" id="closeModal">×</button>
+      </header>
+      <div class="content">
+        <!-- Adapted Formspree form -->
+        <form id="contactForm" action="https://formspree.io/f/mqagloww" method="POST">
+          <input type="hidden" name="subject" id="subjectField" value="">
+          <div class="field">
+            <label class="label" for="name">Votre nom</label>
+            <input class="input" type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label class="label" for="email">Votre courriel</label>
+            <input class="input" type="email" id="email" name="email" required>
+            <div class="error" id="emailError">Veuillez entrer un courriel valide.</div>
+          </div>
+          <div class="field">
+            <label class="label" for="message">Votre message</label>
+            <textarea class="textarea" id="message" name="message" placeholder="Bonjour, ..."></textarea>
+          </div>
+          <div class="actions">
+            <button type="button" class="btn ghost" id="cancelBtn">Annuler</button>
+            <button type="submit" class="btn" id="sendBtn">Envoyer</button>
+          </div>
+          <div class="success" id="successMsg">Merci ! Votre message a été envoyé.</div>
+          <div class="error" id="submitError">Oups, une erreur est survenue. Merci de réessayer.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container" style="text-align:center;">
+      <p>© <span id="year"></span> Fondation Manon Périard — Tous droits réservés.</p>
+      <p class="lead">En mémoire de Manon Périard, enseignante au cœur d’or.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Helpers
+    const qs = (s, el=document) => el.querySelector(s);
+    const qsa = (s, el=document) => [...el.querySelectorAll(s)];
+    const body = document.body;
+
+    const modal = qs('#contactModal');
+    const openers = qsa('.open-modal');
+    const closeBtn = qs('#closeModal');
+    const cancelBtn = qs('#cancelBtn');
+    const subjectField = qs('#subjectField');
+    const form = qs('#contactForm');
+    const emailInput = qs('#email');
+    const emailError = qs('#emailError');
+    const submitError = qs('#submitError');
+    const successMsg = qs('#successMsg');
+    const modalTitle = qs('#modalTitle');
+
+    function openModal(subject) {
+      subjectField.value = subject || '';
+      modalTitle.textContent = subject ? `Écrire — ${subject}` : 'Écrire à la Fondation';
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden','false');
+      body.style.overflow = 'hidden';
+      setTimeout(() => qs('#name').focus(), 10);
+    }
+    function closeModal() {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden','true');
+      body.style.overflow = '';
+      submitError.style.display = 'none';
+      successMsg.style.display = 'none';
+    }
+
+    // Open modal on button click
+    openers.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const subject = btn.getAttribute('data-subject');
+        openModal(subject);
+      });
+    });
+
+    // Close handlers
+    closeBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
+
+    // Basic email validation
+    function isValidEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    // Submit with fetch to Formspree (to stay on page and show success)
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      if (!isValidEmail(formData.get('email'))) {
+        emailError.style.display = 'block';
+        emailInput.setAttribute('aria-invalid', 'true');
+        emailInput.focus();
+        return;
+      } else {
+        emailError.style.display = 'none';
+        emailInput.removeAttribute('aria-invalid');
+      }
+
+      submitError.style.display = 'none';
+      successMsg.style.display = 'none';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+        if (res.ok) {
+          successMsg.style.display = 'block';
+          form.reset();
+          setTimeout(closeModal, 1500);
+        } else {
+          submitError.style.display = 'block';
+        }
+      } catch (err) {
+        submitError.style.display = 'block';
+      }
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
